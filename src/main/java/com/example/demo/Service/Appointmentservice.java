@@ -39,5 +39,10 @@ public class Appointmentservice
 	{
 		return appRepo.updateAppointmentById(app);
 	}
+	
+	public List<AppointmentModel> getpattern(String pattern)
+	{
+		return appRepo.getpattern(pattern);  
+	}
 
 }

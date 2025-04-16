@@ -107,5 +107,25 @@ public class AppointmentRepository
 		
 		return value>0?true:false;
 	}
+	
+	public List<AppointmentModel> getpattern(String pattern)
+	{
+		List<AppointmentModel> plist=template.query("select *from appointmentmodel where cname like '%"+pattern+"%' ", new RowMapper<AppointmentModel>() {
+
+			public AppointmentModel mapRow(ResultSet rs, int rowNum) throws SQLException 
+			{
+				AppointmentModel ap=new AppointmentModel();
+				ap.setApid(rs.getInt(1));
+				ap.setCname(rs.getString(2));
+				ap.setAdate(rs.getDate(3));
+				ap.setAtime(rs.getString(4));
+				ap.setVnumber(rs.getString(5));
+				
+				return ap;
+			}			
+		});
+		
+		return plist.size()>0?plist:null;
+	}
 
 }

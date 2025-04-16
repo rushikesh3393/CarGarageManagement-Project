@@ -89,13 +89,12 @@ public class UserRepository
 		return ulist.size()>0?(UserModel)ulist.get(0):null;
 	}
 	
+
 	public boolean getUserByEmailPass(String email, String password)
 	{
-		 List<UserModel> ulist = template.query(
-			        "select * from Usermodel where email=? and password=?",
-			        new Object[]{email, password},
-			        (rs, rowNum) -> {
+		 List<UserModel> ulist = template.query("select * from Usermodel where email=? and password=? and role='admin' ", new Object[]{email, password},(rs, rowNum) -> {
 			            UserModel umodel = new UserModel();
+			            
 			            umodel.setEmail(rs.getString("email"));
 			            umodel.setPassword(rs.getString("password"));
 			            return umodel;
@@ -130,10 +129,8 @@ public class UserRepository
 				ps.setString(3, umodel.getContact());
 				ps.setString(4, umodel.getAddress());
 				ps.setString(5, umodel.getPassword());
-				ps.setInt(6,umodel.getUid());
-				
+				ps.setInt(6,umodel.getUid());	
 			}
-			
 		});
 		if(value >0)
 		{
@@ -143,6 +140,27 @@ public class UserRepository
 		{
 			return false;
 		}
+	}
+	
+	public List<UserModel>  getUserPattern(String upattern)
+	{
+		List<UserModel> uList=template.query("select *from usermodel where uname like '%"+upattern+"%' ", new RowMapper<UserModel> () {
+
+			public UserModel mapRow(ResultSet rs, int rowNum) throws SQLException 
+			{
+				UserModel umodel=new UserModel();
+				umodel.setUid(rs.getInt(1));
+				umodel.setUname(rs.getString(2));
+				umodel.setEmail(rs.getString(3));
+				umodel.setContact(rs.getString(4));
+				umodel.setAddress(rs.getString(5));
+				umodel.setPassword(rs.getString(6));
+				umodel.setRole(rs.getString(7));
+				return umodel;
+			}
+			
+		});
+		return uList;
 	}
 
 }

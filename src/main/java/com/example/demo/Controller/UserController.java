@@ -59,8 +59,10 @@ public class UserController
 		}
 	}
 	
+
 	@PostMapping("/loginUser")
 	public String getUserByEmailPass(@RequestBody UserModel user) {
+		
 	    boolean b = userservice.getUserByEmailPass(user.getEmail(), user.getPassword());
 	    
 	    if (b) {
@@ -69,7 +71,6 @@ public class UserController
 	        return "You Are NOT logged In Successfully...!";
 	    }
 	}
-
 
 
 	
@@ -105,6 +106,22 @@ public class UserController
 			return "User NOT Updated Successfully.....!";
 		}
 		
+	}
+	
+	
+	@GetMapping("/getUserPattern/{upattern}")
+	public List<UserModel>  getUserPattern(@PathVariable("upattern") String upattern)
+	{
+		List<UserModel> uList=userservice.getUserPattern(upattern);
+		
+		if(uList.size()>0)
+		{
+			return uList;
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 }

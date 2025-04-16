@@ -86,9 +86,22 @@ public class AppointmentController
 		else
 		{
 			return "Your Appointment NOT Updated Successfully...!";	
+		}	
+	}
+	
+	@GetMapping("/searchPattern/{pattern}")
+	public List<AppointmentModel> getpattern(@PathVariable("pattern")  String pattern)
+	{
+		List<AppointmentModel> plist=appservice.getpattern(pattern);
+		
+		if(plist.size()>0)
+		{
+			return plist;
 		}
-		
-		
+		else
+		{
+			return null;
+		}
 	}
 	
 	

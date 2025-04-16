@@ -44,5 +44,10 @@ public class UserService
 	{
 		return urepo.getUserByEmailPass(email, password);
 	}
+	
+	public List<UserModel>  getUserPattern(String upattern)
+	{
+		return urepo.getUserPattern(upattern);
+	}
 
 }
