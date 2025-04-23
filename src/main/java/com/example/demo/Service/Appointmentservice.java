@@ -44,5 +44,15 @@ public class Appointmentservice
 	{
 		return appRepo.getpattern(pattern);  
 	}
+	
+	public String getCustNameByApid(int apid) 
+	{
+		return appRepo.getCustNameByApid(apid);
+	}
+	
+	public String getVehicleByApid(int apid)
+	{
+		return appRepo.getVehicleByApid(apid);
+	}
 
 }

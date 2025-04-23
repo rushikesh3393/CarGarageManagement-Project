@@ -104,6 +104,19 @@ public class AppointmentController
 		}
 	}
 	
+	@GetMapping("/getCustByApid/{apid}")
+	public String getCustNameByApid(@PathVariable("apid") Integer apid)
+	{
+		String custName=appservice.getCustNameByApid(apid);
+		return custName;
+	}
+	
+	@GetMapping("/getVehicleByApid/{apid}")
+	public String getVehicleByApid(@PathVariable("apid") Integer apid)
+	{
+		String vnumber=appservice.getVehicleByApid(apid);
+		return vnumber;
+	}
 	
 
 }

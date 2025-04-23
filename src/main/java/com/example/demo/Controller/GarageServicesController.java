@@ -98,6 +98,14 @@ public class GarageServicesController
 	 }
 	
 	
+	 @GetMapping("/serviceCostByName/{svname}")
+	 public int getServiceCostBySvname(@PathVariable("svname") String svname)
+	 {
+		 int scost=gservice.getServiceCostBySvname(svname);
+		 System.out.println(scost);
+		 return scost;
+	 }
+	
 	
 
 }

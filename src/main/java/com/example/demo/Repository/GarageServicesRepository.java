@@ -114,4 +114,17 @@ public class GarageServicesRepository
 		 });
 		 return gsList;
 	 }
+	 
+	 public int getServiceCostBySvname(String svname)
+	 {
+		 int scost=template.queryForObject("select svcost from servicesmodel where servicetype=?",new Object[] {svname},new RowMapper<Integer> () {
+
+			public Integer  mapRow(ResultSet rs, int rowNum) throws SQLException 
+			{
+				return rs.getInt("svcost");
+			}
+			 
+		 } );
+		 return scost;
+	 }
 }

@@ -30,7 +30,7 @@ public class UserRepository
 			        ps.setString(3, usermodel.getContact());   
 			        ps.setString(4, usermodel.getAddress());
 			        ps.setString(5, usermodel.getPassword());
-			        ps.setString(6, "USER");
+			        ps.setString(6, "Customer");
 			    }
 			);
 
@@ -47,7 +47,7 @@ public class UserRepository
 	
 	public List<UserModel> getAllUsers()
 	{
-		ulist=template.query("select *from usermodel",new RowMapper<UserModel>() 
+		ulist=template.query("select * from usermodel order by uname asc",new RowMapper<UserModel>() 
 		{
 			public UserModel mapRow(ResultSet rs, int rowNum) throws SQLException 
 			{

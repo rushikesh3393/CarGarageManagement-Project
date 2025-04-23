@@ -39,7 +39,7 @@ public class TechnicianRepository
 	
 	public List<TechnicianModel> getAllTechnicians()
 	{
-		List<TechnicianModel> techList=template.query("select *from technicianmodel",new RowMapper () {
+		List<TechnicianModel> techList=template.query("select *from technicianmodel order by Tname asc",new RowMapper () {
 
 			public Object mapRow(ResultSet rs, int rowNum) throws SQLException 
 			{

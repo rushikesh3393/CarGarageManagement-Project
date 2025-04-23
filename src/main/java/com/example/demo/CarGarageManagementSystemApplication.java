@@ -9,5 +9,4 @@ public class CarGarageManagementSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CarGarageManagementSystemApplication.class, args);
 	}
-
 }

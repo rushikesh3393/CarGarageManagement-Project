@@ -43,4 +43,9 @@ public class GarageService
 	 {
 		 return gsRepo.getServiceByPattern(patterns);
 	 }
+	 
+	 public int getServiceCostBySvname(String svname)
+	 {
+		 return gsRepo.getServiceCostBySvname(svname);
+	 }
 }

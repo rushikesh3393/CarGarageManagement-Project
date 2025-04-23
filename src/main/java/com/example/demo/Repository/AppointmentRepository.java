@@ -40,7 +40,7 @@ public class AppointmentRepository
 	
 	public List<AppointmentModel> getAppointmentList()
 	{
-		appList=template.query("select *from appointmentmodel", new RowMapper<AppointmentModel>() 
+		appList=template.query("select *from appointmentmodel order by adate asc", new RowMapper<AppointmentModel>() 
 		{
            public AppointmentModel mapRow(ResultSet rs, int rowNum) throws SQLException 
 			{
@@ -126,6 +126,34 @@ public class AppointmentRepository
 		});
 		
 		return plist.size()>0?plist:null;
+	}
+	
+	
+	public String getCustNameByApid(int apid) 
+	{
+	    String cname = template.queryForObject("select cname from appointmentmodel where apid = ?", new Object[]{apid}, new RowMapper<String>() 
+	    {
+	            public String mapRow(ResultSet rs, int rowNum) throws SQLException 
+	            {
+	                return rs.getString("cname");
+	            }
+	        }
+	    );
+	    return cname;
+	}
+
+	
+	public String getVehicleByApid(int apid) 
+	{
+	    String vnumber = template.queryForObject("select vnumber from appointmentmodel where apid = ?", new Object[]{apid}, new RowMapper<String>() 
+	    {
+	            public String mapRow(ResultSet rs, int rowNum) throws SQLException 
+	            {
+	                return rs.getString("vnumber");
+	            }
+	        }
+	    );
+	    return vnumber;
 	}
 
 }
