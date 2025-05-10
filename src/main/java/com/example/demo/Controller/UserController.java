@@ -72,6 +72,20 @@ public class UserController
 	    }
 	}
 
+	@PostMapping("/customerLogin")
+	public String getCustomerByEmailPass(@RequestBody UserModel user) {
+		
+	    boolean b = userservice.getCustomerByEmailPass(user.getEmail(), user.getPassword());
+	    
+	    if (b) 
+	    {
+	        return "You Are logged In Successfully in Customer Panel...!";
+	    } 
+	    else 
+	    {
+	        return "You Are NOT logged In Successfully...!";
+	    }
+	}
 
 	
 	
@@ -123,5 +137,5 @@ public class UserController
 			return null;
 		}
 	}
-
+	
 }

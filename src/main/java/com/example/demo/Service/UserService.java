@@ -45,6 +45,11 @@ public class UserService
 		return urepo.getUserByEmailPass(email, password);
 	}
 	
+	public boolean getCustomerByEmailPass(String email, String password)
+	{
+		return urepo.getCustomerByEmailPass(email, password);
+	}
+	
 	public List<UserModel>  getUserPattern(String upattern)
 	{
 		return urepo.getUserPattern(upattern);

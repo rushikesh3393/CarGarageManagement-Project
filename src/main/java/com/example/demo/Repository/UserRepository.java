@@ -105,6 +105,22 @@ public class UserRepository
 		
 	}
 	
+	
+	public boolean getCustomerByEmailPass(String email, String password)
+	{
+		 List<UserModel> ulist = template.query("select * from Usermodel where email=? and password=? and role='customer' ", new Object[]{email, password},(rs, rowNum) -> {
+			            UserModel umodel = new UserModel();
+			            
+			            umodel.setEmail(rs.getString("email"));
+			            umodel.setPassword(rs.getString("password"));
+			            return umodel;
+			        }
+			    );
+		
+		return ulist.size()>0?true:false;
+		
+	}
+	
 	public boolean isDeleteUserById(int uid)
 	{
 		int value=template.update("delete from usermodel where uid="+uid);

@@ -39,9 +39,9 @@ public class TechnicianRepository
 	
 	public List<TechnicianModel> getAllTechnicians()
 	{
-		List<TechnicianModel> techList=template.query("select *from technicianmodel order by Tname asc",new RowMapper () {
+		List<TechnicianModel> techList=template.query("select *from technicianmodel order by Tname asc",new RowMapper<TechnicianModel> () {
 
-			public Object mapRow(ResultSet rs, int rowNum) throws SQLException 
+			public TechnicianModel mapRow(ResultSet rs, int rowNum) throws SQLException 
 			{
 				TechnicianModel tmodel=new TechnicianModel();
 				tmodel.setTid(rs.getInt(1));
